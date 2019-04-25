@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="st.css">
+</head>
+<body>
+<style>
+	
+* {
+	padding: 0;
+	margin: 0;
+	outline: 0;
+	font-family: sans-serif;
+}
+
+body {
+	background-image: url(bgdark.jpg);
+	background-position: 0 -150px;
+}
+
+#tit a {
+	display: block;
+	background-color: #111;
+	color: #FFF;
+	text-decoration: none;
+	padding: 12px 0;
+	text-align: center;
+}
+
+li > a {
+	display: block;
+	background-color: #333333ba;
+	color: #FFF;
+	text-decoration: none;
+	padding: 12px 0;
+	text-align: center;
+	border-top: 1px solid #393939;
+	text-shadow: 0 0 2px #0BF;
+}
+
+.smenu span {
+	display: block;
+	background-color: #222222bd;
+	color: #FFF;
+	padding: 12px 0;
+	text-align: center;
+	text-shadow: 0 0 2px #B0F;
+}
+
+.smenu {
+	height: 0;
+	overflow: hidden;
+}
+
+.day:target > .smenu {
+	height: auto;
+}
+
+</style>
+
+<div id="tit">
+	<a href="#tit">Расписание</a>
+</div>
+
+<ul>
+	<li id="pn" class="day">
+		<a href="#pn">Понедiлок</a>
+		<div class="smenu">
+			<span>1. Англiйська мова (8:30-9:15)</span>
+			<span>2. Українська мова (9:25-10:10)</span>
+			<span>3. Математика (10:30-11:15)</span>
+			<span>4. Лiтературне читання (11:25-12:10)</span>
+			<span>5. ------</span>
+		</div>
+	</li>
+	<li id="vt" class="day">
+		<a href="#vt">Вiвторок</a>
+		<div class="smenu">
+			<span>1. ------</span>
+			<span>2. Математика (9:25-10:10)</span>
+			<span>3. Природознавство (10:30-11:15)</span>
+			<span>4. Трудове навчання (11:25-12:10)</span>
+			<span>5. Образотворче мистецтво (12:30-13:15)</span>
+			<span>6. Основи здоров'я (13:25-14:10)</span>
+		</div>
+	</li>
+	<li id="sr" class="day">
+		<a href="#sr">Середа</a>
+		<div class="smenu">
+			<span>1. Лiтературне читання (8:30-9:15)</span>
+			<span>2. Математика (9:25-10:10)</span>
+			<span>3. Англiйська мова (10:30-11:15)</span>
+			<span>4. Українська мова (11:25-12:10)</span>
+			<span>5. ------</span>
+		</div>
+	</li>
+	<li id="ct" class="day">
+		<a href="#ct">Четвер</a>
+		<div class="smenu">
+			<span>1. Iнформатика (8:30-9:15)</span>
+			<span>2. Українська мова (9:25-10:10)</span>
+			<span>3. Музичне мистецтво (10:30-11:15)</span>
+			<span>4. ------</span>
+			<span>5. Я у свiтi (12:30-13:15)</span>
+		</div>
+	</li>
+	<li id="pt" class="day">
+		<a href="#pt">П'ятница</a>
+		<div class="smenu">
+			<span>1. ------</span>
+			<span>2. Математика (9:25-10:10)</span>
+			<span>3. Природознавство (10:30-11:15)</span>
+			<span>4. Росiйська мова (11:25-12:10)</span>
+			<span>5. Фiзична культура (12:30-13:15)</span>
+		</div>
+	</li>
+</ul>
+	
+</body>
+</html>
