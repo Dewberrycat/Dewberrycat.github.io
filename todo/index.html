@@ -7,6 +7,8 @@
 <title>
 	Список задач
 </title>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="jquery.ripples-min.js"></script>
 </head>
 <body>
 <style>
@@ -135,6 +137,13 @@
 		tasks.appendChild(div);
 		inp.value='';
 	};
+
+
+	$('body').ripples({
+			resolution: 512,
+			dropRadius: 20,
+			perturbance: 0.04,
+		});
 </script>
 </body>
 </html>
