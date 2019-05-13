@@ -115,6 +115,7 @@
 		$rootScope.add = function() {
 			$rootScope.data.push($rootScope.aufgabe);
 			localStorage.setItem("data", JSON.stringify($rootScope.data));
+			inp.value='';
 		}
 	});
 	
