@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Celtic recipes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/j/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: Verdana;
+		transition: 0.4s;
+		outline: none;
+	}
+	html, body {
+		height: 100%;
+	}
+
+	body {
+		background-image: url(thumb-1920-346993.jpg);
+		background-size: cover;
+		background-attachment: fixed;
+	}
+
+	::-webkit-scrollbar {
+    	width: 9px;
+	}
+
+	::-webkit-scrollbar-track {
+	    background: #3b2619; 
+	}
+
+	::-webkit-scrollbar-thumb {
+	    background: #25170d;
+	    border-radius: 7px; 
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+	    background: #555; 
+	}
+
+	#menu {
+		width: 300px;
+		height: 100%;
+		position: fixed;
+		background-color: rgba(0,0,0,0.3);
+		left: 0;
+		top: 0;
+		overflow-y: scroll;
+		z-index: 999;
+	}
+
+	#menu > #main_menu > a {
+		display: block;
+		text-decoration: none;
+		background: linear-gradient(to bottom, transparent, #000);
+		color: #ce702d;
+		text-align: center;
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-family: Arial;
+		border-bottom: 1px solid #000;
+		border-top: 1px solid #000;
+		box-sizing: border-box;
+	}
+
+	#menu > #main_menu > a:hover {
+		text-shadow: 0 0 9px #ce702d;
+	}
+
+	#menu > #sub_menu > a {
+		display: block;
+		text-decoration: none;
+		color: #c09499;
+		text-align: center;
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-family: Arial;
+		border-bottom: 1px solid #1e1e1e;
+		border-top: 1px solid #000;
+		box-sizing: border-box;
+	}
+
+	#menu > #sub_menu > a:hover {
+		text-shadow: 0 0 9px #c09499;
+	}
+
+	#menu > #sub_menu > a:last-child {
+		border-bottom: none;
+	}
+
+	#content {
+		position: absolute;
+		left: 320px;
+		top: 20px;
+		right: 20px;
+		background-color: rgba(255, 218, 162, 0.8);
+		border-radius: 7px;
+		box-sizing: border-box;
+		padding: 30px;
+	}
+	.txt_center {
+		text-align: center;
+	}
+	#burger {
+		position: absolute;
+		top: 40px;
+		right: 40px;
+		color: #170c06;
+		font-size: 2em;
+		cursor: pointer;
+	}
+	#d_close {
+		position: relative;
+		box-sizing: border-box;
+		height: 40px;
+	}
+
+	#close {
+		position: absolute;
+		font-size: 22px;
+		text-decoration: none;
+		color: #c09499;
+		top: 5px;
+		right: 10px;
+		box-sizing: border-box;
+		padding: 3px;
+	}
+	#burger,
+	#d_close {
+			display: none;
+		}
+
+	@media (max-width: 768px) {
+		#burger,
+		#d_close {
+			display: block;
+		}
+		#burger {
+
+		}
+		#menu {
+			width: 0;
+			background-color: rgba(0,0,0,0.9);
+		}
+		#content {
+			left: 20px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		#menu {
+			width: 300px !important;
+			background-color: rgba(0,0,0,0.3);
+		}
+	}
+</style>
+<div id="menu">
+	<div id="d_close">
+		<a id="close" onclick="this.parentNode.parentNode.style.width='0'" href="#">&times;</a>
+	</div>
+	<div id="main_menu">
+		<a onclick="load_menus(1)" href="#">Напитки</a>
+		<a onclick="load_menus(2)" href="#">Хлеба, каши и завтраки</a>
+		<a onclick="load_menus(3)" href="#">Молоко, яйца и сыр</a>
+		<a onclick="load_menus(4)" href="#">Супы, тушёные овощи и мясо</a>
+		<a onclick="load_menus(5)" href="#">Овощи</a>
+		<a onclick="load_menus(6)" href="#">Рыба, моллюски и водоросли</a>
+		<a onclick="load_menus(7)" href="#">Мясо и дичь</a>
+		<a onclick="load_menus(8)" href="#">Десерты</a>
+	</div>
+	<div id="sub_menu">
+		
+	</div>
+</div>
+<div id="content">
+	<h2 class="txt_center">Celtic recipes</h2>
+	<br><br>
+	<div id="recipe"></div>
+</div>
+
+<div onclick="menu.style.width='300px'" id="burger">&#9776;</div>
+
+<script>
+	function load_menus(arg) {
+		$('#sub_menu').html('');
+		$('#sub_menu').load('cat' + arg + '.html');
+	}
+
+	function load_recipe(arg) {
+		$('#recipe').load(arg);
+	}
+</script>
+</body>
+</html>
