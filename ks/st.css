@@ -1,0 +1,150 @@
+@font-face {
+    font-family: pizes;
+    src: url(9403.ttf);
+   }
+
+* {
+	margin: 0; 
+	padding: 0;
+}
+
+.core {
+	width: 978px;
+	margin: 0px auto;
+}
+
+#logo { 
+	float: left;
+	margin: 30px 0;
+	font-size: 20px;
+ }
+
+ #menu { 
+	float: right;
+ }
+
+#menu a {
+	display: block;
+	float: left;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #222;
+	font-family: sans-serif;
+	margin: 30px 0px 30px 15px;
+	transition: 0.3s;
+
+
+} 
+
+#menu a:hover {
+	color: #00ADEF;
+}
+
+#menu .act {
+	color: #00ADEF;
+}
+
+#pop {
+	height: 513px;
+	background-image: url(ddddd.JPG);
+	background-size: cover;
+	position: relative;
+	box-sizing: border-box;
+	padding: 150px 0px;
+}
+
+
+#pop h6 {
+	color: #FFF;
+	font-size: 16px;
+	text-align: center;
+	font-style: italic;
+
+}
+
+#pop h3 {
+	color: #FFF;
+	font-size: 50px;
+	text-align: center;
+	font-weight: bold;
+	padding: 15px 0px;
+
+}
+
+#pop p {
+	color: #FFF;
+	font-size: 16px;
+	text-align: center;
+	padding-bottom: 30px;
+
+}
+
+#pop a {
+	display: block;
+	color: #FFF;
+	font-size: 16px;
+	border: 1px solid #FFF;
+	padding: 15px 0px;
+	width: 162px;
+	margin: 0 auto;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+
+#pop a:hover {
+	background-color: #00ADEF;
+	border: 1px solid #00ADEF;
+}
+
+#hutor {
+	background-color: #222;
+	height: 600px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#hutor a {
+	text-decoration: none;
+	color: #00ADEF;
+	font-size: 35px;
+	margin: 0px 15px;
+	
+
+
+}
+
+@media (max-width: 500px) {
+
+	* {
+		font-family: pizes;
+	}
+	#logo,
+	#menu,
+	#menu a {
+		float: none;
+	}
+	.core {
+		width: 100%;
+	}
+	#menu a {
+		width: 100%;
+		text-align: center;
+		border-top: 1px solid #CCC;
+		margin: 0;
+		padding: 10px 0px;
+		font-family: pizes;
+	}
+	#menu a:hover {
+		background-color: #00ADEF;
+		border: 1px solid #FFF;
+		color: #FFF;
+		border-bottom: 0px;
+	}
+	#logo {
+		text-align: center;
+		font-size: 50px;
+
+	}
+}
