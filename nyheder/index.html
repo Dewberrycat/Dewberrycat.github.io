@@ -32,12 +32,14 @@
 
 <div id="content" ng-show="fuck">
     <div class="container">
-        <div ng-model="temp" ng-repeat="x in temp">
-            <span>{{x.title}}</span>
-            <br>
-            <span>{{x.desc}}</span>
-            <br>
-            <a href="#" ng-click="loadArt(x.link)"><b>load</b></a>
+        <div ng-repeat="x in temp">
+            <div style="background:url({{x.img}});background-position-x: center;">
+            <a href="#" ng-click="loadArt(x.link)" >
+                <div>
+                    <span>{{x.title}}</span>
+                </div>
+            </a>
+            </div>
         </div>
     </div>
 </div>
@@ -58,6 +60,7 @@
                 $http.get('nyheder.json')
                     .then(resp => {
                         $rootScope.name = resp.data;
+                        console.log($rootScope.name);
                         $rootScope.temp = $rootScope.name.politik;
                     });
                 $rootScope.ch = function(arg) {
