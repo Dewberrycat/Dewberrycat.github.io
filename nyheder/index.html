@@ -50,15 +50,15 @@
         
                 $rootScope.name = "";
                 $http.get('nyheder.json')
-                    .then(resp => {console.log("1: " + resp.data);
-                    $rootScope.name = resp.data;
-                    $rootScope.temp = $rootScope.name.politik;
-                    console.log("2: " + $rootScope.name);});
-                    $rootScope.ch = function(arg) {
-                        $rootScope.temp = $rootScope.name[arg];
-                    }
+                    .then(resp => {
+                        $rootScope.name = resp.data;
+                        $rootScope.temp = $rootScope.name.politik;
+                    });
+                $rootScope.ch = function(arg) {
+                    $rootScope.temp = $rootScope.name[arg];
+                }
                     
-            });
+                });
         </script>
 
 </body>
