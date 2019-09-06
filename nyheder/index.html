@@ -30,15 +30,19 @@
 
 </div>
 
-
-<div id="content">
+<div id="content" ng-show="fuck">
     <div class="container">
-            <div ng-model="temp" ng-repeat="x in temp">
-                    <span>{{x.title}}</span>
-                    <br>
-                    <span>{{x.desc}}</span>
-                </div>
+        <div ng-model="temp" ng-repeat="x in temp">
+            <span>{{x.title}}</span>
+            <br>
+            <span>{{x.desc}}</span>
+            <a ng-click="loadArt(x.link)">load</a>
+        </div>
     </div>
+</div>
+
+<div id="art" ng-show="!fuck">
+    <div class="container">sddssd</div>
 </div>
 
 <script>
@@ -47,7 +51,8 @@
                 $routeProvider.when("/politik", {templateUrl:"politik/politik.html"})
             })
             .run(function($rootScope, $http){
-        
+                
+                $rootScope.fuck = true;
                 $rootScope.name = "";
                 $http.get('nyheder.json')
                     .then(resp => {
@@ -56,7 +61,15 @@
                     });
                 $rootScope.ch = function(arg) {
                     $rootScope.temp = $rootScope.name[arg];
+                    if ($rootScope.fuck == false) $rootScope.fuck = true;
                 }
+                $rootScope.loadArt = function(arg) {
+                    console.log(arg);
+                    jQuery('#art > .container').load(arg);
+                    $rootScope.fuck = !$rootScope.fuck;
+                }
+
+                
                     
                 });
         </script>
