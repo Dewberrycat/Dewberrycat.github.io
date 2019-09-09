@@ -33,13 +33,12 @@
 <div id="content" ng-show="fuck">
     <div class="container">
         <div ng-repeat="x in temp">
-            <div style="background:url({{x.img}});background-position-x: center;">
-            <a href="#" ng-click="loadArt(x.link)" >
+            <a href="#" ng-click="loadArt(x.link)">
+                <img src="{{x.img}}" alt="">
                 <div>
                     <span>{{x.title}}</span>
                 </div>
             </a>
-            </div>
         </div>
     </div>
 </div>
