@@ -61,7 +61,7 @@ html, body {
 	color: #DDD;
 	box-sizing: border-box;
     padding: 5px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.6);
 }
 
 #content .container > div > a > img {
