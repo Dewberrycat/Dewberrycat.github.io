@@ -45,7 +45,7 @@ html, body {
 #content .container > div {
 	border: 1px solid #333;
 	box-shadow: 0 0 5px #222;
-	margin-bottom: 15px;
+	margin-bottom: 19px;
 	box-sizing: border-box;
 	max-width: 600px;
 }
