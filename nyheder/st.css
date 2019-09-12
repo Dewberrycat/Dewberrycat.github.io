@@ -75,7 +75,7 @@ html, body {
 	max-width: 700px;
 }
 
-#art .container h1 {
+#art .container img {
 	padding: 10px 0;
 }
 
@@ -90,7 +90,13 @@ html, body {
 		max-width: 100%;
 	}
 
-	#content .container > div > div {
+	#art .container p {
+		box-sizing: border-box;
+		padding: 10px;
+	}
+
+	#art .container img {
 		max-width: 100%;
 	}
+
 }
