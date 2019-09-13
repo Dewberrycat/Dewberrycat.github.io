@@ -63,7 +63,7 @@ html, body {
 	box-sizing: border-box;
     padding: 10px;
     font-size: 1.1em;
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0,0,0,0.85);
 }
 
 #content .container > div > a > img {
