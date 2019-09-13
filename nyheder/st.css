@@ -18,6 +18,10 @@ html, body {
 	margin: 0 auto;
 }
 
+.active {
+	background-color: #648 !important;
+}
+
 #head {
 	background-color: #000;
 	background: url(background.png);
@@ -90,6 +94,14 @@ html, body {
 		max-width: 100%;
 	}
 
+	#content .container > div {
+		max-width: 100%;
+	}
+
+	#content .container {
+		padding: 0;
+	}
+
 	#art .container p {
 		box-sizing: border-box;
 		padding: 10px;
@@ -97,6 +109,19 @@ html, body {
 
 	#art .container img {
 		max-width: 100%;
+	}
+
+	#menu .container > a {
+		display: block;
+		margin-right: 0;
+		padding: 10px 0;
+		text-align: center;
+		border-top: 1px solid #8c75b9;
+		border-bottom: 1px solid #330175;
+	}
+
+	#menu .container {
+		padding: 15px 0 25px 0;
 	}
 
 }
