@@ -33,7 +33,7 @@
 angular.module('app', ['angularUtils.directives.dirPagination', 'ngRoute'])
 	.run(function($rootScope, $http){
 		$rootScope.order = 'id';
-		$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
+		//$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
 		$http.get('test.json').then(function(res){
 			$rootScope.data = res.data;
 			
