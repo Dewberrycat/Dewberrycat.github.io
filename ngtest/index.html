@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="mainC">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="angular.min.js"></script>
+<script src="angular-route.min.js"></script>
+<script src="dirPagination.js"></script>
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Doc. name</td>
+		<td></td>
+	</tr>
+	<tr dir-paginate="item in data | itemsPerPage:2 | orderBy:order">
+		<td>{{item.id}}</td>
+		<td>{{item.docName}}</td>
+		<td><a ng-click="getData(item)" href="#!edit/{{item.id}}">edit</a></td>
+	</tr>
+</table>
+
+<dir-pagination-controls></dir-pagination-controls>
+
+<ng-view></ng-view>
+
+<script>
+
+angular.module('app', ['angularUtils.directives.dirPagination', 'ngRoute'])
+	.run(function($rootScope, $http){
+		$rootScope.order = 'id';
+		$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
+		$http.get('test.json').then(function(res){
+			$rootScope.data = res.data;
+			
+		});
+	})
+	.controller('mainC', function($scope, $rootScope, $route, $routeParams) {
+		     $scope.params = $routeParams;
+		     $scope.getData = function(i) {
+		     	$scope.alldata = i;
+		     }
+		     
+		 })
+	.config(function($routeProvider, $locationProvider) {
+	  $routeProvider
+	   .when('/edit/:userid', {
+	    templateUrl: 'user.html',
+	    controller: 'mainC'
+	  });
+
+	});
+
+</script>
+<style>
+	dir-pagination-controls,
+	ng-view {
+		display: block;
+	}
+	table,
+	dir-pagination-controls,
+	ng-view
+	 {
+		margin: 30px;
+	}
+
+	table td {
+		padding: 5px;
+		border: 1px solid #000;
+	}
+</style>
+</body>
+</html>
