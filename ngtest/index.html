@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<div id="showcase">
+	
 <table>
 	<tr>
 		<td>ID</td>
@@ -27,6 +29,8 @@
 </table>
 
 <dir-pagination-controls></dir-pagination-controls>
+
+</div>
 
 <ng-view></ng-view>
 
@@ -59,15 +63,42 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 
 </script>
 <style>
+	* {
+		outline: none;
+		position: relative;
+	}
+
+	html, body {
+		height: 100%;
+	}
 	dir-pagination-controls,
 	ng-view {
 		display: block;
 	}
-	table,
-	dir-pagination-controls,
-	ng-view
-	 {
-		margin: 30px;
+	#showcase {
+		max-width: 700px;
+		border: 1px solid #000;
+		margin: 0 auto;
+		margin-top: 30px;
+		box-sizing: border-box;
+		padding: 10px;
+	}
+
+	#showcase table {
+		max-width: 700px;
+	}
+
+	ng-view {
+		border: 1px solid #000;
+		margin: 0 auto;
+		margin-top: 30px;
+		max-width: 700px;
+		box-sizing: border-box;
+		padding: 10px;
+	}
+
+	*[editable-text] {
+		cursor: pointer;
 	}
 
 	table td {
