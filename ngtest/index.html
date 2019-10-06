@@ -2,7 +2,7 @@
 <html ng-app="app" ng-controller="mainC">
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>Personal settings</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="bootstrap.min.css">
 <link href="xeditable.min.css" rel="stylesheet">
@@ -14,16 +14,19 @@
 <body>
 
 <div id="showcase">
-	
+<h2>Personal settings</h2>
+<br>
 <table>
 	<tr>
 		<td>ID</td>
 		<td>Doc. name</td>
+		<td>Date</td>
 		<td></td>
 	</tr>
 	<tr dir-paginate="item in data | itemsPerPage:2 | orderBy:order">
 		<td>{{item.id}}</td>
 		<td>{{item.docName}}</td>
+		<td>{{item.docDate}}</td>
 		<td><a ng-click="getData(item)" href="#!edit/{{item.id}}">edit</a></td>
 	</tr>
 </table>
@@ -46,18 +49,18 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 		});
 	})
 	.controller('mainC', function($scope, $rootScope, $route, $routeParams) {
-		     $scope.params = $routeParams;
-		     $scope.getData = function(i) {
-		     	$scope.alldata = i;
-		     }
-		     
-		 })
+		 $scope.params = $routeParams;
+	     $scope.getData = function(i) {
+	     	$scope.alldata = i;
+	     };
+	     
+	 })
 	.config(function($routeProvider, $locationProvider) {
-	  $routeProvider
-	   .when('/edit/:userid', {
-	    templateUrl: 'user.html',
-	    controller: 'mainC'
-	  });
+		  $routeProvider
+		   .when('/edit/:userid', {
+		    templateUrl: 'user.html',
+		    controller: 'mainC'
+		  });
 
 	});
 
@@ -70,6 +73,7 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 
 	html, body {
 		height: 100%;
+		font-family: sans-serif;
 	}
 	dir-pagination-controls,
 	ng-view {
@@ -104,6 +108,10 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 	table td {
 		padding: 5px;
 		border: 1px solid #000;
+	}
+
+	table {
+		width: 100%;
 	}
 </style>
 </body>
