@@ -18,12 +18,12 @@
 <br>
 <table>
 	<tr>
-		<td>ID</td>
-		<td>Doc. name</td>
-		<td>Date</td>
+		<td ng-click="sortBy('id')">ID</td>
+		<td ng-click="sortBy('docName')">Doc. name</td>
+		<td ng-click="sortBy('docDate')">Date</td>
 		<td></td>
 	</tr>
-	<tr dir-paginate="item in data | itemsPerPage:2 | orderBy:order">
+	<tr dir-paginate="item in data | itemsPerPage:2 | orderBy:order:rev">
 		<td>{{item.id}}</td>
 		<td>{{item.docName}}</td>
 		<td>{{item.docDate}}</td>
@@ -42,7 +42,12 @@
 angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ngRoute'])
 	.run(function($rootScope, $http){
 		$rootScope.order = 'id';
-		//$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
+		$rootScope.rev = false;
+		$rootScope.sortBy = function(prop) {
+			$rootScope.order == prop ? $rootScope.rev = !$rootScope.rev : $rootScope.rev = false;
+			$rootScope.order = prop;
+		}
+		$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
 		$http.get('test.json').then(function(res){
 			$rootScope.data = res.data;
 			
@@ -112,6 +117,10 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 
 	table {
 		width: 100%;
+	}
+
+	table tr:first-child td:hover {
+		cursor: pointer;
 	}
 </style>
 </body>
