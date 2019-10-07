@@ -30,7 +30,7 @@
 		<td><a ng-click="getData(item)" href="#!edit/{{item.id}}">edit</a></td>
 	</tr>
 </table>
-
+<button class="save" ng-click="logout()">Save data</button>
 <dir-pagination-controls></dir-pagination-controls>
 
 </div>
@@ -47,7 +47,7 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 			$rootScope.order == prop ? $rootScope.rev = !$rootScope.rev : $rootScope.rev = false;
 			$rootScope.order = prop;
 		}
-		//$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
+		$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
 		$http.get('test.json').then(function(res){
 			$rootScope.data = res.data;
 			
@@ -58,6 +58,10 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 	     $scope.getData = function(i) {
 	     	$scope.alldata = i;
 	     };
+	     $scope.logout = function() {
+	     	console.log($rootScope.data);
+	     	localStorage.setItem("data", JSON.stringify($rootScope.data));
+	     }
 	     
 	 })
 	.config(function($routeProvider, $locationProvider) {
@@ -121,6 +125,18 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 
 	table tr:first-child td:hover {
 		cursor: pointer;
+	}
+
+	button.save {
+		border: 1px solid #BBB;
+		background-color: #DDD;
+		border-radius: 4px;
+		padding: 5px 15px;
+		margin: 20px 0;
+	}
+
+	button.save:active {
+		background-color: #BBB;
 	}
 </style>
 </body>
