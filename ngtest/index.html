@@ -47,7 +47,7 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 			$rootScope.order == prop ? $rootScope.rev = !$rootScope.rev : $rootScope.rev = false;
 			$rootScope.order = prop;
 		}
-		$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
+		$rootScope.data = JSON.parse(localStorage.getItem("testdata")) ||
 		$http.get('test.json').then(function(res){
 			$rootScope.data = res.data;
 			
@@ -60,7 +60,7 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 	     };
 	     $scope.logout = function() {
 	     	console.log($rootScope.data);
-	     	localStorage.setItem("data", JSON.stringify($rootScope.data));
+	     	localStorage.setItem("testdata", JSON.stringify($rootScope.data));
 	     }
 	     
 	 })
