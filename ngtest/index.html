@@ -47,7 +47,7 @@ angular.module('app', ['angularUtils.directives.dirPagination', 'xeditable', 'ng
 			$rootScope.order == prop ? $rootScope.rev = !$rootScope.rev : $rootScope.rev = false;
 			$rootScope.order = prop;
 		}
-		$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
+		//$rootScope.data = JSON.parse(localStorage.getItem("data")) ||
 		$http.get('test.json').then(function(res){
 			$rootScope.data = res.data;
 			
