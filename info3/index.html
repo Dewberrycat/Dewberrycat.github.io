@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Pragma" content="no-cache">
+<link rel="stylesheet" href="st2.css">
+<link rel="stylesheet" href="wwflakes-webfont.css">
+<script src="/j/jquery-3.3.1.min.js"></script>
+<script src="/j/jquery.ripples-min.js"></script>
+<script src="snowstorm.js"></script>
+
+<title></title>
+
+</head>
+<body>
+
+<div class="tit">
+<a class="atit" href="#" onclick="check('.div1')">LANG</a>
+<a class="at2"  href="#"></a>
+
+<a class="atit" href="#" onclick="check('.div2')">APPs</a>
+<a class="at2" href="#"></a>
+
+<a class="atit" href="#" onclick="check('.div3')">THEMEs</a>
+<a class="at2" href="#"></a>
+
+<a class="atit" href="#" onclick="check('.div4')">SRC</a>
+
+
+
+<div style="clear: both"></div>
+</div>
+ 
+
+<div class="div1 menu">
+     <div class="ttit">
+     </div>
+     <div class="tarcont">
+     <a class="ex" href="/isl/islmenu.html">Íslensk</a>
+     <a class="d"></a>
+     <a class="ex">Norsk</a>
+     <a class="d"></a>
+     <a class="ex" href="/de/index.html">Deutsch</a>
+     <a class="d"></a>
+     <a class="ex" href="/dk/index.html">Deutsch kurz</a>
+     <a class="d"></a>
+     <a class="ex">Wirtschaftsdeutsch</a>
+     <a class="d"></a>
+     <a class="ex" href="/lit/index.html">Lietuviška</a>
+     <a class="d"></a>
+     <a class="ex" href="/suo/index.html">Suomen kieli</a>
+     <a class="d"></a>
+     <a class="ex" href="/ees/index.html">Eesti keel</a>
+     <a class="d"></a>
+     <a class="ex">English</a>
+     <a class="d"></a>
+     <a class="ex">Business&nbsp;English</a>
+     <a class="d"></a>
+     <a class="ex" href="/ivr/index.html">עִבְרִית</a>
+     <a class="d"></a>
+     <a class="ex">Română</a>
+     <a class="d"></a>
+     <a class="ex" href="/kit/index.html"><span class="k">中国</span></a>
+     </div>
+     <div class="foot">
+     </div>
+</div>
+
+<div class="div2 menu">
+     <div class="ttit">
+     </div>
+     <div class="tarcont">
+     <a class="ex" href="/csv/index.html">CSV to Table</a>
+     <a class="d"></a>
+     <a class="ex" href="/bio/index.html">Biorhythms</a>
+     </div>
+     <div class="foot">
+     </div>
+</div>
+
+<div class="div3 menu">
+     <div class="ttit">
+     </div>
+     <div class="tarcont">
+     <a download class="ex" href="/NightLion Aptana3 Theme.tmTheme">NightLion Sublime</a>
+     <a class="d"></a>
+     <a download class="ex" href="/Zeus-Sublime-Text.tmTheme">Zeus Sublime</a>
+     </div>
+     <div class="foot">
+     </div>
+</div>
+
+<div class="div4 menu">
+     <div class="ttit">
+     </div>
+     <div class="tarcont">
+     <a class="ex" href="/src/java_panel.txt">Java panel</a>
+     <a class="d"></a>
+     <a class="ex" href="/src/httpd.txt">Apache PHP conf</a>
+     <a class="d"></a>
+     <br>
+     <a class="d"></a>
+     <a class="ex" href="j/jquery.jqplot.min.js">jqPlot</a>
+     <a class="d"></a>
+     <a class="ex" href="j/jquery.jqplot.min.css">jqPlot css</a>
+     <a class="d"></a>
+     <a class="ex" href="j/angular.min.js">AngularJS 1.7.2</a>
+     <a class="d"></a>
+     <a class="ex" href="j/jquery-3.3.1.min.js">jQuery 3.3.1</a>
+     <a class="d"></a>
+     <a class="ex" href="j/lodash.min.js">Lodash</a>
+
+     <br>
+
+
+     </div>
+     <div class="foot">
+     </div>
+</div>
+
+
+
+<div style="" id="time"></div>
+
+<div style="display: none; position: absolute; width: 400px; height: 450px; background-image: url(met.png); top: 150px; left: 200px; box-shadow: 0 0 7px #000" id="vorm">
+     
+</div>
+<script src="menu.js"></script>
+<script src="bug-min.js"></script>
+<script>
+var hour, minute;
+setInterval(function() {
+	hour = (new Date()).getHours();
+	minute = (new Date()).getMinutes();
+	hour = hour < 10 ? (hour = "0"+hour) : hour;
+	minute = minute < 10 ? (minute = "0"+minute) : minute;
+	time.innerHTML = hour+":"+minute;
+}, 1000);
+
+new BugController({'minBugs':1, 'maxBugs':1, 'mouseOver':'fly'});
+
+$('body').ripples({
+            resolution: 512,
+            dropRadius: 20,
+            perturbance: 0.04,
+        });
+</script>
+</body>
+</html>
