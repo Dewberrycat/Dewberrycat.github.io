@@ -1,0 +1,32 @@
+{
+	"items": [
+		{
+			"id": "1",
+			"name": "Меренговый рулет",
+			"router": "merengovii_rulet",
+			"logo": "assets/rec/merengovii_rulet/merengovii_rulet.jpg",
+			"ingr": ["баклажан", "кабачок", "лук", "чеснок", "пися"]
+		},
+		{
+			"id": "2",
+			"name": "Рагу по-венгерски",
+			"router": "ragu_po_vengerski",
+			"logo": "assets/rec/ragu_po_vengerski/ragu_po_vengerski_sm.png",
+			"ingr": ["баклажан", "кабачок", "лук", "чеснок"]
+		},
+		{
+			"id": "3",
+			"name": "Рагу по-венгерски",
+			"router": "ragu_po_vengerski",
+			"logo": "assets/rec/ragu_po_vengerski/ragu_po_vengerski_sm.png",
+			"ingr": ["баклажан", "кабачок", "чеснок"]
+		},
+		{
+			"id": "4",
+			"name": "Рагу по-венгерски",
+			"router": "ragu_po_vengerski",
+			"logo": "assets/rec/ragu_po_vengerski/ragu_po_vengerski_sm.png",
+			"ingr": ["баклажан", "кабачок"]
+		}
+	]
+}
