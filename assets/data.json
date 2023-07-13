@@ -18,7 +18,7 @@
 			"id": "3",
 			"name": "Индейка",
 			"router": "indejka",
-			"logo": "assets/rec/indejka/indejka.jpg",
+			"logo": "assets/rec/indejka/indejka_sm.jpg",
 			"ingr": ["индейка", "лук", "мясо"]
 		}
 	]
