@@ -20,6 +20,13 @@
 			"router": "indejka",
 			"logo": "assets/rec/indejka/indejka_sm.jpg",
 			"ingr": ["индейка", "лук", "мясо"]
+		},
+		{
+			"id": "4",
+			"name": "Лобио",
+			"router": "lobio",
+			"logo": "assets/rec/lobio/lobio.jpg",
+			"ingr": ["фасоль", "томатная паста"]
 		}
 	]
 }
