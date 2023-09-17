@@ -30,7 +30,7 @@
 		},
 		{
 			"id": "5",
-			"name": "Лобио",
+			"name": "Салат летний",
 			"router": "salat_letnij",
 			"logo": "assets/rec/salat_letnij/salat_letnij.jpg",
 			"ingr": ["огурец", "помидор", "перец"]
