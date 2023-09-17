@@ -27,6 +27,13 @@
 			"router": "lobio",
 			"logo": "assets/rec/lobio/lobio.jpg",
 			"ingr": ["фасоль", "томатная паста"]
+		},
+		{
+			"id": "5",
+			"name": "Лобио",
+			"router": "salat_letnij",
+			"logo": "assets/rec/salat_letnij/salat_letnij.jpg",
+			"ingr": ["огурец", "помидор", "перец"]
 		}
 	]
 }
