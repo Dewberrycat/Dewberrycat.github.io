@@ -35,5 +35,13 @@
 			"logo": "assets/rec/salat_letnij/salat_letnij.jpg",
 			"ingr": ["огурец", "помидор", "перец"]
 		}
+		,
+		{
+			"id": "6",
+			"name": "Молочная девочка",
+			"router": "tort_milkygirl",
+			"logo": "assets/rec/tort_milkygirl/tort_milkygirl.jpg",
+			"ingr": ["сгущёнка", "сгущенка", "сгущёное молоко", "сгущеное молоко", "маскарпоне"]
+		}
 	]
 }
