@@ -1,0 +1,32 @@
+{
+	"vtoroje": [
+		{
+			"id": "1",
+			"name": "Цветная капуста под соусом бешамель",
+			"router": "cv_kapusta_bechamel",
+			"logo": "assets/rec/cv_kapusta_bechamel/cv_kapusta_bechamel.jpg",
+			"ingr": ["цветная капуста", "бешамель", "овощи"]
+		},
+		{
+			"id": "2",
+			"name": "Индейка",
+			"router": "indejka",
+			"logo": "assets/rec/indejka/indejka_sm.jpg",
+			"ingr": ["индейка", "лук", "мясо"]
+		},
+		{
+			"id": "3",
+			"name": "Лобио",
+			"router": "lobio",
+			"logo": "assets/rec/lobio/lobio.jpg",
+			"ingr": ["фасоль", "томатная паста"]
+		},
+		{
+			"id": "4",
+			"name": "Баклажаны с помидорами, сыром и чесноком в духовке",
+			"router": "baklazhany_s_pomidorami",
+			"logo": "assets/rec/baklazhany_s_pomidorami/baklazhany_s_pomidorami.jpg",
+			"ingr": ["баклажан", "помидор", "сыр", "майонез", "чеснок"]
+		}
+	]
+}
