@@ -4,31 +4,31 @@
 			"id": "1",
 			"name": "Первое",
 			"router": "pervoje",
-			"logo": "assets/icons/soup2.png"
+			"logo": "assets/icons/soup_flat_white.png"
 		},
 		{
 			"id": "2",
 			"name": "Второе",
 			"router": "vtoroje",
-			"logo": "assets/icons/biryani.png"
+			"logo": "assets/icons/fried-rice_flat_white.png"
 		},
 		{
 			"id": "3",
 			"name": "Салаты",
 			"router": "salaty",
-			"logo": "assets/icons/salad.png"
+			"logo": "assets/icons/salad_135484_flat_white.png"
 		},
 		{
 			"id": "4",
 			"name": "Выпечка",
 			"router": "vypechka",
-			"logo": "assets/icons/cake.png"
+			"logo": "assets/icons/cake-slice_flat_white2.png"
 		},
 		{
 			"id": "5",
 			"name": "Соусы",
 			"router": "sousy",
-			"logo": "assets/icons/gravy.png"
+			"logo": "assets/icons/gravy_flat_white.png"
 		}
 	]
 }
