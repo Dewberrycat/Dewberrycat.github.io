@@ -1,0 +1,40 @@
+{
+	"last": [
+		{
+			"id": "1",
+			"name": "Цветная капуста под соусом бешамель",
+			"router": "cv_kapusta_bechamel",
+			"logo": "assets/rec/cv_kapusta_bechamel/cv_kapusta_bechamel.jpg"
+		},
+		{
+			"id": "2",
+			"name": "Индейка",
+			"router": "indejka",
+			"logo": "assets/rec/indejka/indejka_sm.jpg"
+		},
+		{
+			"id": "3",
+			"name": "Лобио",
+			"router": "lobio",
+			"logo": "assets/rec/lobio/lobio.jpg"
+		},
+		{
+			"id": "4",
+			"name": "Баклажаны с помидорами, сыром и чесноком в духовке",
+			"router": "baklazhany_s_pomidorami",
+			"logo": "assets/rec/baklazhany_s_pomidorami/baklazhany_s_pomidorami.jpg"
+		},
+		{
+			"id": "5",
+			"name": "Молочная девочка с кремом маскарпоне",
+			"router": "tort_milkygirl",
+			"logo": "assets/rec/tort_milkygirl/tort_milkygirl.jpg"
+		},
+		{
+			"id": "6",
+			"name": "Белый соус",
+			"router": "belyj_sous",
+			"logo": "assets/rec/belyj_sous/belyj_sous.jpg"
+		}
+	]
+}
