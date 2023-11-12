@@ -5,7 +5,7 @@
 			"name": "Цветная капуста под соусом бешамель",
 			"router": "cv_kapusta_bechamel",
 			"logo": "assets/rec/cv_kapusta_bechamel/cv_kapusta_bechamel.jpg",
-			"ingr": ["цветная капуста", "бешамель", "овощи"]
+			"ingr": ["цветная капуста", "бешамель", "сливочное масло", "мука", "молоко", "сыр"]
 		},
 		{
 			"id": "2",
@@ -26,7 +26,7 @@
 			"name": "Баклажаны с помидорами, сыром и чесноком в духовке",
 			"router": "baklazhany_s_pomidorami",
 			"logo": "assets/rec/baklazhany_s_pomidorami/baklazhany_s_pomidorami.jpg",
-			"ingr": ["баклажан", "помидор", "сыр", "майонез", "чеснок"]
+			"ingr": ["баклажан", "помидор", "сыр", "майонез"]
 		}
 	]
 }
