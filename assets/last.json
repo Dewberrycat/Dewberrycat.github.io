@@ -4,37 +4,43 @@
 			"id": "1",
 			"name": "Цветная капуста под соусом бешамель",
 			"router": "cv_kapusta_bechamel",
-			"logo": "assets/rec/cv_kapusta_bechamel/cv_kapusta_bechamel.jpg"
+			"logo": "assets/rec/cv_kapusta_bechamel/cv_kapusta_bechamel.jpg",
+			"ingr": ["цветная капуста", "бешамель", "сливочное масло", "мука", "молоко", "сыр"]
 		},
 		{
 			"id": "2",
 			"name": "Индейка",
 			"router": "indejka",
-			"logo": "assets/rec/indejka/indejka_sm.jpg"
+			"logo": "assets/rec/indejka/indejka_sm.jpg",
+			"ingr": ["индейка", "лук", "мясо"]
 		},
 		{
 			"id": "3",
 			"name": "Лобио",
 			"router": "lobio",
-			"logo": "assets/rec/lobio/lobio.jpg"
+			"logo": "assets/rec/lobio/lobio.jpg",
+			"ingr": ["фасоль", "томатная паста"]
 		},
 		{
 			"id": "4",
 			"name": "Баклажаны с помидорами, сыром и чесноком в духовке",
 			"router": "baklazhany_s_pomidorami",
-			"logo": "assets/rec/baklazhany_s_pomidorami/baklazhany_s_pomidorami.jpg"
+			"logo": "assets/rec/baklazhany_s_pomidorami/baklazhany_s_pomidorami.jpg",
+			"ingr": ["баклажан", "помидор", "сыр", "майонез"]
 		},
 		{
 			"id": "5",
 			"name": "Молочная девочка с кремом маскарпоне",
 			"router": "tort_milkygirl",
-			"logo": "assets/rec/tort_milkygirl/tort_milkygirl.jpg"
+			"logo": "assets/rec/tort_milkygirl/tort_milkygirl.jpg",
+			"ingr": ["сгущёнка", "сгущенка", "сгущёное молоко", "сгущеное молоко", "маскарпоне", "яйца", "сахар", "мука", "сливки"]
 		},
 		{
 			"id": "6",
 			"name": "Белый соус",
 			"router": "belyj_sous",
-			"logo": "assets/rec/belyj_sous/belyj_sous.jpg"
+			"logo": "assets/rec/belyj_sous/belyj_sous.jpg",
+			"ingr": ["масло сливочное", "мука пшеничная", "молоко", "чеснок", "сыр"]
 		}
 	]
 }
