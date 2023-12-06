@@ -4,7 +4,7 @@
 			"id": "1",
 			"name": "Белый соус",
 			"router": "belyj_sous",
-			"logo": "assets/rec/belyj_sous/belyj_sous.jpg",
+			"logo": "assets/rec/belyj_sous/belyj_sous_sm.jpg",
 			"ingr": ["масло сливочное", "мука пшеничная", "молоко", "чеснок", "сыр"]
 		}
 	]
