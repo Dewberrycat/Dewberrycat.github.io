@@ -1,0 +1,107 @@
+@font-face {
+    font-family: "kaiti";
+    src: url("KaiTi.ttf");
+}
+
+@font-face {
+    font-family: "py";
+    src: url("NotoSans-Regular.ttf");
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: url(background.png);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    outline: none;
+    font-family: sans-serif;
+    transition: 0.4s;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.k {
+	font-family: kaiti;
+    font-size: 72px;
+    color: aliceblue;
+    text-shadow: 0 0 5px #00adff;
+    text-align: center;
+}
+
+.p {
+	font-family: py;
+    font-size: 20px;
+    color: aliceblue;
+    text-shadow: 0 0 2px #a460ff;
+    text-align: center;
+}
+
+.block {
+    width: 120px;
+    height: 120px;
+    border-radius: 7px;
+    margin: 10px;
+    padding: 5px 0;
+    background: #373737;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0 0 4px #000;
+}
+
+.block:hover {
+    box-shadow: 0 0 4px #0485e0;
+    background: #2a2a2a;
+}
+
+.block:hover .k {
+    color: #00adff;
+    text-shadow: 0 0 4px #000;
+}
+
+.block:hover .p {
+    color: #a460ff;
+    text-shadow: 0 0 4px #000;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment  {
+    height: 30px;
+    display: block;
+    background-color: transparent;
+    background-color: #999;
+}
+
+::-webkit-scrollbar-track-piece  {
+    background-color: #999;
+    -webkit-border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 20px;
+    background-color: #042777;
+    border: 0px solid #666;
+    -webkit-border-radius: 0px;
+}
