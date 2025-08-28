@@ -1,33 +1,439 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Погода в Одессе</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода и качество воздуха в Одессе</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2d3436;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2d3436;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header .date {
+            color: #636e72;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #2d3436;
+        }
+        
+        .temp-main {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .temp {
+            font-size: 4em;
+            font-weight: bold;
+            color: #2d3436;
+            line-height: 1;
+        }
+        
+        .feels-like {
+            font-size: 1.2em;
+            color: #636e72;
+            margin-top: 5px;
+        }
+        
+        .weather-desc {
+            text-align: center;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .detail-label {
+            font-size: 0.9em;
+            color: #636e72;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2d3436;
+        }
+        
+        .wind-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .wind-title {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+        
+        .wind-details {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .wind-item {
+            min-width: 120px;
+        }
+        
+        .aqi-scale {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .aqi-level {
+            text-align: center;
+            flex: 1;
+            padding: 5px;
+        }
+        
+        .pollutants-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .pollutant-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #636e72;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 20px;
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 15px;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .details-grid,
+            .pollutants-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .temp {
+                font-size: 3em;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .wind-details {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="weather"></div>
-    
+    <div class="container">
+        <div class="header">
+            <h1>🌤️ Одесса, Украина</h1>
+            <div class="date" id="currentDate"></div>
+        </div>
+        
+        <div id="weather">
+            <div class="loading">
+                <p>Загружаем данные о погоде...</p>
+            </div>
+        </div>
+        
+        <div id="air-quality">
+            <div class="loading">
+                <p>Загружаем данные о качестве воздуха...</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        async function getWeather() {
+        // Функция для конвертации гПа в мм рт.ст.
+        function hPaTommHg(hPa) {
+            return Math.round(hPa * 0.750062);
+        }
+        
+        // Функция для определения направления ветра по градусам
+        function getWindDirection(degrees) {
+            const directions = ['С', 'СВ', 'В', 'ЮВ', 'Ю', 'ЮЗ', 'З', 'СЗ'];
+            const index = Math.round(degrees / 45) % 8;
+            return directions[index];
+        }
+        
+        // Функция для получения текстового описания качества воздуха
+        function getAQIDescription(aqi) {
+            const descriptions = {
+                1: { text: 'Отличное', color: '#27ae60', emoji: '😊' },
+                2: { text: 'Хорошее', color: '#2ecc71', emoji: '🙂' },
+                3: { text: 'Удовлетворительное', color: '#f39c12', emoji: '😐' },
+                4: { text: 'Плохое', color: '#e67e22', emoji: '😷' },
+                5: { text: 'Очень плохое', color: '#e74c3c', emoji: '⚠️' }
+            };
+            return descriptions[aqi] || { text: 'Неизвестно', color: '#95a5a6', emoji: '❓' };
+        }
+        
+        // Функция отображения погоды
+        function displayWeather(data) {
+            const weatherDiv = document.getElementById('weather');
+            const windDir = getWindDirection(data.wind.deg);
+            const pressuremmHg = hPaTommHg(data.main.pressure);
+            
+            weatherDiv.innerHTML = `
+                <div class="section">
+                    <div class="section-title">🌤️ Погода</div>
+                    
+                    <div class="temp-main">
+                        <div class="temp">${Math.round(data.main.temp)}°C</div>
+                        <div class="feels-like">Ощущается как: ${Math.round(data.main.feels_like)}°C</div>
+                    </div>
+                    
+                    <div class="weather-desc">
+                        ${data.weather[0].description}
+                    </div>
+                    
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">💧 Влажность</div>
+                            <div class="detail-value">${data.main.humidity}%</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">📊 Давление</div>
+                            <div class="detail-value">${pressuremmHg} мм рт.ст.</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">👁️ Видимость</div>
+                            <div class="detail-value">${data.visibility / 1000} км</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">☁️ Облачность</div>
+                            <div class="detail-value">${data.clouds.all}%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="wind-section">
+                        <div class="wind-title">🌬️ Ветер</div>
+                        <div class="wind-details">
+                            <div class="wind-item">
+                                <div class="detail-label">Скорость</div>
+                                <div class="detail-value">${data.wind.speed} м/с</div>
+                            </div>
+                            
+                            <div class="wind-item">
+                                <div class="detail-label">Направление</div>
+                                <div class="detail-value">${windDir} (${data.wind.deg}°)</div>
+                            </div>
+                            
+                            <div class="wind-item">
+                                <div class="detail-label">Порывы</div>
+                                <div class="detail-value">${data.wind.gust} м/с</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Функция отображения качества воздуха
+        function displayAirQuality(data) {
+            const airDiv = document.getElementById('air-quality');
+            const aqi = data.list[0].main.aqi;
+            const aqiInfo = getAQIDescription(aqi);
+            const components = data.list[0].components;
+            
+            airDiv.innerHTML = `
+                <div class="section">
+                    <div class="section-title">🌫️ Качество воздуха</div>
+                    
+                    <div class="detail-item" style="background: ${aqiInfo.color}; color: white;">
+                        <div class="detail-label">Индекс качества воздуха (AQI)</div>
+                        <div class="detail-value">${aqiInfo.emoji} ${aqiInfo.text} (${aqi}/5)</div>
+                    </div>
+                    
+                    <div class="aqi-scale">
+                        <div class="aqi-level" style="color: #27ae60;">1 - Отл.</div>
+                        <div class="aqi-level" style="color: #2ecc71;">2 - Хор.</div>
+                        <div class="aqi-level" style="color: #f39c12;">3 - Удов.</div>
+                        <div class="aqi-level" style="color: #e67e22;">4 - Плох.</div>
+                        <div class="aqi-level" style="color: #e74c3c;">5 - Оч. плох.</div>
+                    </div>
+                    
+                    <div class="pollutants-grid">
+                        <div class="pollutant-item">
+                            <div class="detail-label">PM2.5 (мелкие частицы)</div>
+                            <div class="detail-value">${components.pm2_5} μg/m³</div>
+                        </div>
+                        
+                        <div class="pollutant-item">
+                            <div class="detail-label">PM10 (крупные частицы)</div>
+                            <div class="detail-value">${components.pm10} μg/m³</div>
+                        </div>
+                        
+                        <div class="pollutant-item">
+                            <div class="detail-label">CO (угарный газ)</div>
+                            <div class="detail-value">${components.co} μg/m³</div>
+                        </div>
+                        
+                        <div class="pollutant-item">
+                            <div class="detail-label">NO₂ (диоксид азота)</div>
+                            <div class="detail-value">${components.no2} μg/m³</div>
+                        </div>
+                        
+                        <div class="pollutant-item">
+                            <div class="detail-label">O₃ (озон)</div>
+                            <div class="detail-value">${components.o3} μg/m³</div>
+                        </div>
+                        
+                        <div class="pollutant-item">
+                            <div class="detail-label">SO₂ (диоксид серы)</div>
+                            <div class="detail-value">${components.so2} μg/m³</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Функция для обработки ошибок
+        function displayError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `
+                <div class="error">
+                    <h3>⚠️ Ошибка загрузки данных</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+        
+        // Функция получения погоды
+        async function getWeatherData() {
             try {
                 const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Odesa,UA&appid=4ab3b2bcc9c4b61ce05fa98a95173b1e&units=metric&lang=ru');
-                const data = await response.json();
-                console.log('Данные получены:', data);
                 
-                // Отображаем данные на странице
-                document.getElementById('weather').innerHTML = `
-                    <h2>Погода в Одессе</h2>
-                    <p>Температура: ${data.main.temp}°C</p>
-                    <p>Ощущается как: ${data.main.feels_like}°C</p>
-                    <p>Погода: ${data.weather[0].description}</p>
-                    <p>Влажность: ${data.main.humidity}%</p>
-                `;
+                if (!response.ok) {
+                    throw new Error(`Ошибка HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayWeather(data);
+                return data.coord; // Возвращаем координаты для запроса качества воздуха
+                
             } catch (error) {
-                console.error('Ошибка:', error);
+                console.error('Ошибка погоды:', error);
+                displayError('weather', error.message);
+                return null;
             }
         }
         
-        // Вызываем функцию при загрузке страницы
-        getWeather();
+        // Функция получения качества воздуха
+        async function getAirQualityData(lat, lon) {
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=4ab3b2bcc9c4b61ce05fa98a95173b1e`);
+                
+                if (!response.ok) {
+                    throw new Error(`Ошибка HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayAirQuality(data);
+                
+            } catch (error) {
+                console.error('Ошибка качества воздуха:', error);
+                displayError('air-quality', error.message);
+            }
+        }
+        
+        // Основная функция
+        async function loadAllData() {
+            // Показываем текущую дату
+            const now = new Date();
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('ru-RU', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Сначала получаем погоду, затем качество воздуха
+            const coords = await getWeatherData();
+            if (coords) {
+                await getAirQualityData(coords.lat, coords.lon);
+            }
+        }
+        
+        // Запускаем при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadAllData);
     </script>
 </body>
 </html>
