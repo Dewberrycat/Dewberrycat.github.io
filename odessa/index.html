@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Погода в Одессе</title>
+</head>
+<body>
+    <div id="weather"></div>
+    
+    <script>
+        async function getWeather() {
+            try {
+                const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Odesa,UA&appid=4ab3b2bcc9c4b61ce05fa98a95173b1e&units=metric&lang=ru');
+                const data = await response.json();
+                console.log('Данные получены:', data);
+                
+                // Отображаем данные на странице
+                document.getElementById('weather').innerHTML = `
+                    <h2>Погода в Одессе</h2>
+                    <p>Температура: ${data.main.temp}°C</p>
+                    <p>Ощущается как: ${data.main.feels_like}°C</p>
+                    <p>Погода: ${data.weather[0].description}</p>
+                    <p>Влажность: ${data.main.humidity}%</p>
+                `;
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        }
+        
+        // Вызываем функцию при загрузке страницы
+        getWeather();
+    </script>
+</body>
+</html>
